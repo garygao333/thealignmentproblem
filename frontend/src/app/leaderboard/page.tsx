@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import confetti from "canvas-confetti";
 import {
   Table,
   TableBody,
@@ -12,6 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
 
 const rapidLeaderboardData = [
   {
@@ -194,6 +196,56 @@ type Player = {
 export default function LeaderboardPage() {
   const [mode, setMode] = useState<LeaderboardMode>("rapid");
 
+  useEffect(() => {
+    const duration = 700; // 2 seconds
+    const animationEnd = Date.now() + duration;
+
+    const uniqueConfettiColors = [
+      "#FF6B6B",
+      "#4ECDC4",
+      "#45B7D1",
+      "#FFA07A",
+      "#98D8C8",
+      "#F7DC6F",
+      "#BB8FCE",
+      "#82E0AA",
+    ];
+
+    const runConfettiAnimation = () => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) return;
+
+      // Left bottom cannon
+      confetti({
+        particleCount: 15,
+        angle: 60,
+        spread: 30,
+        origin: { x: 0, y: 1 },
+        colors: uniqueConfettiColors,
+        zIndex: 100,
+      });
+
+      // Right bottom cannon
+      confetti({
+        particleCount: 15,
+        angle: 120,
+        spread: 30,
+        origin: { x: 1, y: 1 },
+        colors: uniqueConfettiColors,
+        zIndex: 100,
+      });
+
+      requestAnimationFrame(runConfettiAnimation);
+    };
+
+    runConfettiAnimation();
+
+    return () => {
+      confetti.reset();
+    };
+  }, []);
+
   const renderLeaderboard = (data: Player[]) => (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
       <Table>
@@ -218,8 +270,11 @@ export default function LeaderboardPage() {
         </TableHeader>
         <TableBody>
           {data.map((player, index) => (
-            <TableRow
+            <motion.tr
               key={player.rank}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
               className={`
               hover:bg-gray-50 transition-colors duration-150 ease-in-out
               ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}
@@ -285,7 +340,7 @@ export default function LeaderboardPage() {
                     : `${player.survivalTime} min`}
                 </Badge>
               </TableCell>
-            </TableRow>
+            </motion.tr>
           ))}
         </TableBody>
       </Table>
