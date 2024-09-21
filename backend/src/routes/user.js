@@ -1,8 +1,8 @@
-import routes from './helloRouter'
-
-const express = require('express')
-
-const { loginUser, signupUser, getProfile } = require('../controllers/userController')
+import express from 'express'
+import mongoose from 'mongoose'
+import userModel from '../models/userModel.js'
+import { loginUser, signupUser, getProfile } from '../controllers/userController.js'
+import userSchema from '../models/userModel.js'
 
 const router = express.Router()
 
@@ -10,4 +10,4 @@ router.post('/login', loginUser)
 router.post('/signup', signupUser)
 router.get('/profile', getProfile)
 
-export default routes
+export default router

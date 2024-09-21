@@ -1,5 +1,5 @@
-const User = require('../models/userModel')
-const jwt = require('jsonwebtoken')
+import User from '../models/userModel.js'
+import jwt from 'jsonwebtoken'
 
 const createToken = (_id) => {
   return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
@@ -41,4 +41,4 @@ const getProfile = async (req, res) => {
     }
   };
 
-module.exports = { signupUser, loginUser, getProfile }
+export { signupUser, loginUser, getProfile }

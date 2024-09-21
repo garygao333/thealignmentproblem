@@ -1,8 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const gameSchema = new Schema({
     question: {
+        //add objectid
         type: String,
         required: true
     },
@@ -22,4 +23,4 @@ const gameSchema = new Schema({
     }
 }, {timestamps: true})
 
-module.exports = mongoose.model('Game', gameSchema)
+export default mongoose.model('Game', gameSchema)
