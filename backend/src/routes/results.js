@@ -8,4 +8,3 @@ router.post('/post/:sessionId', postResults)
 router.get('/get/:id', getResults)
 
 export default router;
-
