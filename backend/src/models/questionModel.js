@@ -9,10 +9,6 @@ const questionSchema = new Schema({
     answer: {
         type: String,
         required: true
-    },
-    questionId: {
-        type: String,
-        required: true
     }
 }, {timestamps: true})
 

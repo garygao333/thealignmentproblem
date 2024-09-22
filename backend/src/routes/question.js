@@ -5,6 +5,12 @@ import {createQuestion} from '../controllers/questionController.js'
 
 const router = express.Router()
 
-router.post('/questions', createQuestion)
+router.post('/', createQuestion)
 
 export default router;
+
+/*
+
+
+
+*/

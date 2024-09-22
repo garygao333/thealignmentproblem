@@ -4,25 +4,59 @@ import mongoose from 'mongoose'
 
 const getRapid = async (req, res) => {
     try  {
-        //ig we shld decide whether we want to use a sessionid
         const sessionId = req.params.sessionId;
+        // const userId = req.user.id;
+        const userId = req.user ? req.user.id : null;
+
         //fetching 50 questions from questionmodel
-        const questions = await Question.aggregate([{ $sample: { size: 50 } }]);
-        res.status(200).json(questions)
+        console.log('fetching quest')
+        const questions = await Question.aggregate([{ $sample: { size: 1 } }]);
+        console.log('questions fetched')
+
+        if (userId) {
+            const newGame = new Game({
+                sessionId: mongoose.Types.ObjectId(sessionId),
+                userId: mongoose.Types.ObjectId(userId),
+                questionIds: questions.map(question => question._id),
+                gameMode: 'rapid',
+            });
+            await newGame.save();
+            res.status(200).json({ questions, gameId: newGame._id });
+        } else {
+            res.status(200).json(questions);
+        }
+
     } catch (error) {
-        res.status(500).json({error: 'Error fetching questions'} )
+        res.status(500).send({ error: 'Error fetching questions', details: error.message });
     }
 }
 
 const getSurvival = async (req, res) => {
     try  {
-        //ig we shld decide whether we want to use a sessionid
         const sessionId = req.params.sessionId;
+        // const userId = req.user.id;
+        const userId = req.user ? req.user.id : null;
+
         //fetching 50 questions from questionmodel
-        const questions = await Question.aggregate([{ $sample: { size: 50 } }]);
-        res.status(200).json(questions)
+        console.log('fetching quest')
+        const questions = await Question.aggregate([{ $sample: { size: 1 } }]);
+        console.log('questions fetched')
+
+        if (userId) {
+            const newGame = new Game({
+                sessionId: mongoose.Types.ObjectId(sessionId),
+                userId: mongoose.Types.ObjectId(userId),
+                questionIds: questions.map(question => question._id),
+                gameMode: 'rapid',
+            });
+            await newGame.save();
+            res.status(200).json({ questions, gameId: newGame._id });
+        } else {
+            res.status(200).json(questions);
+        }
+
     } catch (error) {
-        res.status(500).json({error: 'Error fetching questions'} )
+        res.status(500).send({ error: 'Error fetching questions', details: error.message });
     }
 }
 

@@ -30,9 +30,9 @@ app.get("/", (req, res) => {
 
 //Will set up these routes
 app.use('/api/user', user)
-app.use('api/question', question)
-app.use('api/game', game)
-api.use('api/results', results)
+app.use('/api/question', question)
+app.use('/api/game', game)
+api.use('/api/results', results)
 
 mongoose.connect(process.env.MONG_URI)
     .then(() => {
