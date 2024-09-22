@@ -20,17 +20,20 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Inspiration
+We were inspired by the growing need for effective AI communication skills in a fun, competitive format. Just as typing games have gained popularity, we saw an opportunity to create a game focused on prompt engineering.
 
-To learn more about Next.js, take a look at the following resources:
+## What it does
+The Alignment Problem is a competitive game that tests users' abilities to craft effective AI prompts. Players can choose between Rapid Mode for speed or Survival Mode for strategic questioning, all while climbing a leaderboard.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How we built it
+We developed the platform using the MERN stack with Next.js, leveraging Cerebras and Tune to tackle complex problems. The front end features components for user authentication, gameplay, and real-time score tracking, providing a seamless and engaging user experience.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Accomplishments that we're proud of
+We successfully created a fully functional prototype that integrates a leaderboard and competitive elements. The positive feedback from initial testers highlighted the engaging gameplay and the potential for skill improvement.
 
-## Deploy on Vercel
+## What we learned
+We learned the importance of user feedback in shaping gameplay dynamics. Additionally, we gained insights into optimizing performance with real-time data processing, ensuring a seamless user experience.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## What's next for The Alignment Problem
+We plan to enhance the game with more diverse question categories, expand the user base, and introduce community-driven features like custom challenges. Our goal is to refine the experience and increase engagement!
