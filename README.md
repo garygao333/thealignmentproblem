@@ -8,7 +8,7 @@ Kasra Panahi (kasra@sas.upenn.edu)
 We were inspired by the growing need for effective AI communication skills in a fun, competitive format. Just as typing games have gained popularity, we saw an opportunity to create a game focused on prompt engineering.
 
 ## What it does
-The Alignment Problem is a competitive game that tests users' abilities to craft effective AI prompts. Players can choose between Rapid Mode for speed or Survival Mode for strategic questioning, all while climbing a leaderboard.
+The Alignment Problem is a competitive game that tests users' abilities to craft effective AI prompts. In Rapid mode, users focus on speed and strategic questioning as they work their way up the leaderboard. 
 
 ## How we built it
 We developed the platform using the MERN stack with Next.js, leveraging Cerebras and Tune to tackle complex problems. The front end features components for user authentication, gameplay, and real-time score tracking, providing a seamless and engaging user experience.
